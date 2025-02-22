@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://hfawyhx1dwna"]
+
+[ext_resource type="Script" path="res://Scripts/test.gd" id="1_57pwb"]
+[ext_resource type="PackedScene" uid="uid://cu440emlhve1m" path="res://FPSController/PlayerScene.tscn" id="2_l0f6l"]
+[ext_resource type="PackedScene" uid="uid://dsjhc6hbfbanm" path="res://Assets/NPC/Npc.tscn" id="3_23b4l"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xmut0"]
+size = Vector2(32, 32)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yc16y"]
+vertices = PackedVector3Array(16, 0, 16, -16, 0, 16, 16, 0, -16, -16, 0, -16)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ybbx"]
+data = PackedVector3Array(16, 0, 16, -16, 0, 16, 16, 0, -16, -16, 0, 16, -16, 0, -16, 16, 0, -16)
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_57pwb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_xmut0")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="MeshInstance3D"]
+navigation_mesh = SubResource("NavigationMesh_yc16y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2ybbx")
+
+[node name="Player" parent="." instance=ExtResource("2_l0f6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.605718, 1.31431, 0.0265188)
+enable_inventory = false
+
+[node name="default" parent="." instance=ExtResource("3_23b4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.814, 0, -6.114)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 277.0
+offset_bottom = 135.0
+text = "WASD - move
+
+Key \"1\" - do nothing
+Key \"2\" - NPC will follow you
+Key \"3\" - NPC will wander around"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.282425, 0.959289, 0, -0.959289, 0.282425, 0, 3.18509, 0)

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsjhc6hbfbanm"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/InteractableNpc.gd" id="1_jt1li"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
+radius = 0.4
+height = 2.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xanw1"]
+radius = 0.4
+height = 2.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_rury5"]
+size = Vector3(0.875, 0.875, 0.875)
+
+[node name="default" type="CharacterBody3D"]
+script = ExtResource("1_jt1li")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30601, 0)
+mesh = SubResource("CapsuleMesh_lnmrj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30404, 0)
+shape = SubResource("CapsuleShape3D_xanw1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45852, 0)
+mesh = SubResource("BoxMesh_rury5")
+
+[node name="Optimizator" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="screen_entered" from="Optimizator" to="." method="_on_optimizator_screen_entered"]
+[connection signal="screen_exited" from="Optimizator" to="." method="_on_optimizator_screen_exited"]
