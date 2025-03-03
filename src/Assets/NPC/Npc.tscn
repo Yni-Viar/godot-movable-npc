@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsjhc6hbfbanm"]
 
-[ext_resource type="Script" path="res://Scripts/NPC/InteractableNpc.gd" id="1_jt1li"]
+[ext_resource type="Script" uid="uid://cu11oeqieq8it" path="res://Scripts/NPC/InteractableNpc.gd" id="1_jt1li"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
 radius = 0.4

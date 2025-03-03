@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://hfawyhx1dwna"]
 
-[ext_resource type="Script" path="res://Scripts/test.gd" id="1_57pwb"]
+[ext_resource type="Script" uid="uid://cyoe5buct81ja" path="res://Scripts/test.gd" id="1_57pwb"]
 [ext_resource type="PackedScene" uid="uid://cu440emlhve1m" path="res://FPSController/PlayerScene.tscn" id="2_l0f6l"]
 [ext_resource type="PackedScene" uid="uid://dsjhc6hbfbanm" path="res://Assets/NPC/Npc.tscn" id="3_23b4l"]
 
